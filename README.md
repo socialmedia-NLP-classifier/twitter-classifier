@@ -6,3 +6,6 @@ Take in a post from twitter/facebook/ and other social-media platforms and train
 After we classify a text/post we can filter the collection of tweets and display the posts that are worth reading.
 Input: text and other meta-data of the post
 Output: either a Yes vs No or a numerical scale for how important the post is.
+
+
+https://console.cloud.google.com/bigquery
