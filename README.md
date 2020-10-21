@@ -9,3 +9,5 @@ Output: either a Yes vs No or a numerical scale for how important the post is.
 
 
 https://console.cloud.google.com/bigquery
+
+testing readme
