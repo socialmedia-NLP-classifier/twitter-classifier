@@ -1,0 +1,5 @@
+worst 1.2
+hours 1.08
+delay 0.97
+no 0.43
+why 0.41

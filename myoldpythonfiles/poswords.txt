@@ -1,0 +1,5 @@
+great 0.93
+thank 0.87
+thanks 0.71
+love 0.53
+appreciate 0.46
