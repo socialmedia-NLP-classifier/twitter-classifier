@@ -17,6 +17,7 @@ testing readme
 - [Table of Content:](#table-of-content)
   - [dependencies](#dependencies)
   - [Screenshots](#screenshots)
+  - [datasets](#datasets)
 
 
 ## dependencies
@@ -24,3 +25,10 @@ testing readme
 - tweepy
 
 ## Screenshots
+
+
+## datasets
+- https://www.kaggle.com/mtesconi/twitter-deep-fake-text
+- https://www.kaggle.com/phoeyleeteh/1970-vs-2017-profanity-curse-swearing-words
+- https://www.kaggle.com/davidmartngutirrez/twitter-bots-accounts
+- https://www.kaggle.com/cosmos98/twitter-and-reddit-sentimental-analysis-dataset?select=Twitter_Data.csv
