@@ -29,11 +29,9 @@ testing readme
 
 ## dependencies
 
-- tweepy
 
 
-
-
+https://stackoverflow.com/questions/8165028/newbie-in-heroku-error-when-push-my-app-to-heroku/8171155#8171155
 
 
 
