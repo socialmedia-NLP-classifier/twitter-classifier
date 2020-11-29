@@ -8,8 +8,11 @@ import skimage
 
 app = flask.Flask(__name__, template_folder='templates')
 
-path_to_vectorizer = 'models/vectorizer.pkl'
-path_to_text_classifier = 'models/text-classifier.pkl'
+#path_to_vectorizer = 'models/vectorizer.pkl'
+path_to_vectorizer = "kn_comments.pkl"
+#path_to_text_classifier = 'models/text-classifier.pkl'
+path_to_text_classifier = "kn_models.pkl"
+
 path_to_image_classifier = 'models/image-classifier.pkl'
 
 with open(path_to_vectorizer, 'rb') as f:
@@ -23,9 +26,41 @@ with open(path_to_image_classifier, 'rb') as f:
 
 
 
+#####  pipeline from jupyter notebook ######
+translator = str.maketrans('', '', string.punctuation)
+
+def remove_stopwords(a):
+    return " ".join([word for word in word_tokenize(a) if word not in stopwords])
+
+def remove_sp_char(a):
+    return a.translate(translator)
+
+def text_pipeline2(a):
+
+    a = remove_sp_char(a.lower())
+    a = remove_stopwords(a)
+    return a
+###################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
+
     if flask.request.method == 'GET':
         # Just render the initial form, to get input
         return(flask.render_template('main.html'))
@@ -34,13 +69,13 @@ def main():
     if flask.request.method == 'POST':
         # Get the input from the user.
         user_input_text = flask.request.form['user_input_text']
-        
+        parsed_text = text_pipeline2(user_input_text)
         # Turn the text into numbers using our vectorizer
-        X = vectorizer.transform([user_input_text])
-        
-        # Make a prediction 
+        X = vectorizer.transform([parsed_text])
+
+        # Make a prediction
         predictions = model.predict(X)
-        
+
         # Get the first and only value of the prediction.
         prediction = predictions[0]
 
@@ -57,8 +92,9 @@ def main():
         precent_republican = predicted_proba[1]
 
 
-        return flask.render_template('main.html', 
+        return flask.render_template('main.html',
             input_text=user_input_text,
+            parsed_text=parsed_text,
             result=prediction,
             precent_democrat=precent_democrat,
             precent_republican=precent_republican)
@@ -80,7 +116,7 @@ def input_values():
 
         list_of_inputs = [var_one, var_two, var_three]
 
-        return(flask.render_template('input_values.html', 
+        return(flask.render_template('input_values.html',
             returned_var_one=var_one,
             returned_var_two=var_two,
             returned_var_three=var_three,

@@ -6,12 +6,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="Web app for Kukai Nakahata and Andy Celdo">
 		<meta name="author" content="Kukai Nakahata, Andy Celdo">
-		<link rel="icon" href="favicon.ico">
+		<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 		<!-- fonts awsome js -->
 		<script src="https://use.fontawesome.com/releases/v5.14.0/js/all.js" data-auto-replace-svg="nest"></script>
 		<!-- my regular css and js-->
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" type="text/css", href="{{ url_for('static',filename='styles/mainpage.css') }}">
 
 
 	<title>Twitter-dripper app</title>
@@ -37,7 +37,7 @@
 			</nav>
 
 			<h1> Hello World </h1>
-			<form action="{{ url_for('main') }}" method="POST">
+			<form action="{{ url_for('main') }}" method="POST" id="input_space">
 				<fieldset>
 					<legend>Input Text:</legend>
 					Type your text in here:
@@ -46,9 +46,13 @@
 				</fieldset>
 			</form>
 
-			<div class="alert alert-success">
+			<div class="alert alert-success" id="output_space">
 				{% if input_text %}
 					<h4> Classification for: {{ input_text }} </h4>
+				{% endif %}
+
+				{% if parsed_text %}
+					<h4> After parsing: {{ parsed_text }} </h4>
 				{% endif %}
 
 				{% if result %}
