@@ -9,7 +9,7 @@ import skimage
 app = flask.Flask(__name__, template_folder='templates')
 
 #path_to_vectorizer = 'models/vectorizer.pkl'
-path_to_vectorizer = "kn_comments.pkl"
+path_to_vectorizer = "kn_vectorizer.pkl"
 #path_to_text_classifier = 'models/text-classifier.pkl'
 path_to_text_classifier = "kn_models.pkl"
 
@@ -41,15 +41,6 @@ def text_pipeline2(a):
     a = remove_stopwords(a)
     return a
 ###################################################
-
-
-
-
-
-
-
-
-
 
 
 
